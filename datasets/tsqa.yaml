@@ -1,0 +1,4 @@
+name: tsqa
+train_file: /data2/wenhu/TSQA_Experiment/Time-Sensitive-QA/dataset/train.json
+dev_file: /data2/wenhu/TSQA_Experiment/Time-Sensitive-QA/dataset/dev.json
+test_file: /data2/wenhu/TSQA_Experiment/Time-Sensitive-QA/dataset/test.json
