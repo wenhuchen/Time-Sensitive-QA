@@ -1,0 +1,738 @@
+{
+  "P54": {
+    "meaning": "member of sports team",
+    "template": [
+      "Which team did $1 play for $4?",
+      "$1 played for which team $4?",
+      "Which team did the player $1 belong to $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P39": {
+    "meaning": "position held",
+    "template": [
+      "Which position did $1 hold $4?",
+      "What was the position of $1 $4?",
+      "What position did $1 take $4?",
+      "$1 took which position $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P166": {
+    "meaning": "award received",
+    "template": [
+      "Which award did $1 receive $2?",
+      "$1 received which award $2?",
+      "What award was endowed to $1 $2?"
+    ],
+    "mode": "pointwise"
+  },
+  "P108": {
+    "meaning": "employer",
+    "template": [
+      "Which employer did $1 work for $4?",
+      "Who did $1 work for $4?",
+      "What was the name of the employer $1 work for $4?",
+      "$1 was an employee for whom $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P131": {
+    "meaning": "located in the administrative territorial entity",
+    "template": [
+      "Which adminstrative district was $1 located $4?",
+      "Which adminstrative district did $1 belong to $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P7256": {
+    "meaning": "computer performance",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P69": {
+    "meaning": "educated at",
+    "template": [
+      "Where was $1 educated $4?",
+      "Which school did $1 go to $4?",
+      "$1 went to which school $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1411": {
+    "meaning": "nominated for",
+    "template": [
+      "Which award was $1 nominated for $2?",
+      "$1 was nominated for what award $2?"
+    ],
+    "mode": "pointwise"
+  },
+  "P793": {
+    "meaning": "significant event",
+    "template": [
+      "What significant event was happening to $1 $4?",
+      "What significant event was going on in $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P937": {
+    "meaning": "work location",
+    "template": [
+      "Where did $1 work $4?",
+      "What was the working location for $1 $4?",
+      "$1 worked in  which location $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P127": {
+    "meaning": "owned by",
+    "template": [
+      "Who was the owner of $1 $4?",
+      "$1 was owned by whom $4?",
+      "Who owned $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P463": {
+    "meaning": "member of",
+    "template": [
+      "$1 became a member of what organization or association $2?",
+      "What organization did $1 join $2?"
+    ],
+    "mode": "pointwise"
+  },
+  "P1831": {
+    "meaning": "electorate",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P1448": {
+    "meaning": "official name",
+    "template": [
+      "What was the official name of $1 $4?",
+      "$1 was officially named what $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P527": {
+    "meaning": "has part",
+    "template": [
+      "What or Who was part of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P2962": {
+    "meaning": "title of chess person",
+    "template": [
+      "Which title was conferred to $1 $2?"
+    ],
+    "mode": "pointwise"
+  },
+  "P17": {
+    "meaning": "country",
+    "template": [
+      "Which country did $1 belong to $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P172": {
+    "meaning": "ethnic group",
+    "template": [
+      "Which ethical group did $1 belong to $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1435": {
+    "meaning": "heritage designation",
+    "template": [
+      "Which site was the heritage designation of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1346": {
+    "meaning": "winner",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P102": {
+    "meaning": "member of political party",
+    "template": [
+      "Which political party did $1 belong to $4?",
+      "Which party was $1 a member of $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P6": {
+    "meaning": "head of government",
+    "template": [
+      "Who was the head of $1 $4?",
+      "Who was the chair of $1 $4?",
+      "Who was in charge of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P27": {
+    "meaning": "country of citizenship",
+    "template": [
+      "What citizenship did $1 hold $4?",
+      "What was the nationality of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1352": {
+    "meaning": "ranking",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P488": {
+    "meaning": "chairperson",
+    "template": [
+      "Who was the chair of $1 $4?",
+      "Who was the head of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P361": {
+    "meaning": "part of",
+    "template": [
+      "$1 was a part of what $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1433": {
+    "meaning": "published in",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P551": {
+    "meaning": "residence",
+    "template": [
+      "What was the residence of $1 $4?",
+      "Where did $1 live $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P137": {
+    "meaning": "operator",
+    "template": [
+      "What was the operator of $1 $4?",
+      "What operated $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P190": {
+    "meaning": "twinned administrative body",
+    "template": [
+      "What was the twinned city of $1 $4?",
+      "$1 was twinned with which city $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P410": {
+    "meaning": "military rank",
+    "template": [
+      "What was the military rank of $1 $4?",
+      "What military rank did $1 have $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P26": {
+    "meaning": "spouse",
+    "template": [
+      "Who was the spouse of $1 $4?",
+      "Who was $1 's spouse $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P2139": {
+    "meaning": "total revenue",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P286": {
+    "meaning": "head coach",
+    "template": [
+      "Who was the head coach of the team $1 $4?",
+      "Who coached the team $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P512": {
+    "meaning": "academic degree",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P106": {
+    "meaning": "occupation",
+    "template": [
+      "What was the occupation of $1 $4?",
+      "What was $1 's occupation $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1308": {
+    "meaning": "officeholder",
+    "template": [
+      "Who was the office holder of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1037": {
+    "meaning": "director / manager",
+    "template": [
+      "Who was the director or manager of $1 $4?",
+      "Who directed or managed $1 $4?",
+      "$1 was managed or directed by whom $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P47": {
+    "meaning": "shares border with",
+    "template": [
+      "What did $1 share border with $4?",
+      "$1 shared border with what $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P185": {
+    "meaning": "doctoral student",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P1365": {
+    "meaning": "replaces",
+    "template": [
+      "What replaced $1 since $2?",
+      "$1 was replaced by what since $2?"
+    ],
+    "mode": "pointwise"
+  },
+  "P176": {
+    "meaning": "manufacturer",
+    "template": [
+      "What was the manufacturer of $1 $4?",
+      "What manufactured $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1376": {
+    "meaning": "capital of",
+    "template": [
+      "$1 was the capital of what $4?",
+      "What was the capital of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P276": {
+    "meaning": "location",
+    "template": [
+      "Where was $1 located $4?",
+      "Where was $1 taking place $4?",
+      "$1 took place in which location $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1128": {
+    "meaning": "employees",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P150": {
+    "meaning": "contains administrative territorial entity",
+    "template": [
+      "What administrative territorial was acquired by $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P6087": {
+    "meaning": "coach of sports team",
+    "template": [
+      "$1 was the coach of which team $4?",
+      "Which team was coached by $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P800": {
+    "meaning": "notable work",
+    "template": [
+      "Which notable work was published by $1 $4?",
+      "$1 published which notable work $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P466": {
+    "meaning": "occupant",
+    "template": [
+      "Who occupied $1 $4?",
+      "Who was the occupant of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P747": {
+    "meaning": "has edition or translation",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P159": {
+    "meaning": "headquarters location",
+    "template": [
+      "Where was the headquarter of $1 located $4?",
+      "The headquarter of $1 was located in where $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P4100": {
+    "meaning": "parliamentary group",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P175": {
+    "meaning": "performer",
+    "template": [
+      "Who was the performer of $1 $4?",
+      "Who performed $1 $4?",
+      "$1 was performed by whom $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1268": {
+    "meaning": "represents",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P197": {
+    "meaning": "adjacent station",
+    "template": [
+      "What was the adjacent station of $1 $4?",
+      "Which station was adjacent to $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P195": {
+    "meaning": "collection",
+    "template": [
+      "Where was $1 collected $4?",
+      "Which collector owned $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P3643": {
+    "meaning": "significant environmental impact",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P371": {
+    "meaning": "presenter",
+    "template": [
+      "Who was the presenter of $1 $4?",
+      "$1 was presented by whom $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P608": {
+    "meaning": "exhibition history",
+    "template": [
+      "Where was $1 exhibited $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P138": {
+    "meaning": "named after",
+    "template": [
+      "$1 was named after what $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P97": {
+    "meaning": "noble title",
+    "template": [
+      "What was the noble title of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P98": {
+    "meaning": "editor",
+    "template": [
+      "Who was the editor of $1 $4?",
+      "$1 was edited by whom $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P421": {
+    "meaning": "located in time zone",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P1344": {
+    "meaning": "participant in",
+    "template": [
+      "Which campaign did $1 participate $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P4791": {
+    "meaning": "commanded by",
+    "template": [
+      "Who commanded $1 $4?",
+      "Who was the commander of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P169": {
+    "meaning": "chief executive officer",
+    "template": [
+      "Who was the chief executive officer of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P2769": {
+    "meaning": "budget",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P355": {
+    "meaning": "subsidiary",
+    "template": [
+      "What was the subsidiary of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P531": {
+    "meaning": "diplomatic mission sent",
+    "template": [
+      "$1 was an ambassador of which Embassy $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1366": {
+    "meaning": "replaced by",
+    "template": [
+      "$1 was replaced by what $2?",
+      "What replaced $1 $2?"
+    ],
+    "mode": "pointwise"
+  },
+  "P1416": {
+    "meaning": "affiliation",
+    "template": [
+      "What was $1 afflicted to $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P36": {
+    "meaning": "capital",
+    "template": [
+      "What\u2019s the capital of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P121": {
+    "meaning": "item operated",
+    "template": [
+      "$1 was operated by what $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1830": {
+    "meaning": "owner of",
+    "template": [
+      "Who was the owner of $1 $4?",
+      "Who owned $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P35": {
+    "meaning": "head of state",
+    "template": [
+      "Who was the president of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P749": {
+    "meaning": "parent organization",
+    "template": [
+      "What was the parent organization of $1 $4?",
+      "Which organization owned $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P366": {
+    "meaning": "use",
+    "template": [
+      "What was $1 used for $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P118": {
+    "meaning": "league",
+    "template": [
+      "Which league did $1 play for $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P115": {
+    "meaning": "home venue",
+    "template": [
+      "What was the home venue of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1399": {
+    "meaning": "convicted of",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P618": {
+    "meaning": "source of energy",
+    "template": [
+      "What was the source of energy for $1 $4?",
+      "What energy powered $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P123": {
+    "meaning": "publisher",
+    "template": [
+      "What was the publisher of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P840": {
+    "meaning": "narrative location",
+    "template": [
+      "What was the narrative location of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P241": {
+    "meaning": "military branch",
+    "template": [
+      "What was the military branch of $1 $4?",
+      "Which military brach did $1 belong to $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1075": {
+    "meaning": "rector",
+    "template": [
+      "Who was the rector of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P607": {
+    "meaning": "conflict",
+    "template": [
+      "What was $1 engaged or conflicted with $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P559": {
+    "meaning": "terminus",
+    "template": [
+      "What was the terminus of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P449": {
+    "meaning": "original broadcaster",
+    "template": [
+      "Who was the original broadcaster of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P264": {
+    "meaning": "record label",
+    "template": [
+      "What was the record label of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P400": {
+    "meaning": "platform",
+    "template": [
+      "Which platform did $1 use $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P40": {
+    "meaning": "child",
+    "template": [
+      "Which child of $1 was born $2?"
+    ],
+    "mode": "pointwise"
+  },
+  "P5096": {
+    "meaning": "member of the crew of",
+    "template": [
+      "$1 was a crew member of what $4?",
+      "Which crew did $1 belong to $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P734": {
+    "meaning": "family name",
+    "template": [
+      "What was the family name of $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P2632": {
+    "meaning": "place of detention",
+    "template": [
+      "What was the place of detention for $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P2291": {
+    "meaning": "charted in",
+    "template": [
+      "Where was $1 charted in $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P710": {
+    "meaning": "participant",
+    "template": [
+      "Who participated in $1 $2?"
+    ],
+    "mode": "pointwise"
+  },
+  "P8047": {
+    "meaning": "country of registry",
+    "template": [
+      "What was the country of registry for $1 $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P1001": {
+    "meaning": "applies to jurisdiction",
+    "template": [
+      "$1 applied to which place $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P2522": {
+    "meaning": "victory",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P641": {
+    "meaning": "sport",
+    "template": [
+      "What sport did $1 participate $4?"
+    ],
+    "mode": "accumulate"
+  },
+  "P411": {
+    "meaning": "canonization status",
+    "template": [],
+    "mode": "n/a"
+  },
+  "P2561": {
+    "meaning": "name",
+    "template": [
+      "What was the name of $1 $4?"
+    ],
+    "mode": "accumulate"
+  }
+}
