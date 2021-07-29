@@ -3,6 +3,7 @@ import torch
 import pandas as pd
 from IPython.display import display, HTML
 from transformers import BigBirdTokenizer, BigBirdForQuestionAnswering, BigBirdConfig
+from utils import get_raw_scores, readGZip
 import hydra
 from omegaconf import DictConfig
 from datasets import Dataset
@@ -13,7 +14,6 @@ from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from transformers import AdamW
 import logging
 from transformers.data.processors.utils import DataProcessor
-from utils import get_raw_scores, readGZip
 from multiprocessing import Pool, cpu_count
 import numpy as np
 from datetime import datetime
@@ -460,7 +460,10 @@ def main(cfg: DictConfig) -> None:
 
     if cfg.model_path:
         logger.info('loading model from {}'.format(cfg.model_path))
-        model.load_state_dict(torch.load(os.path.join(cfg.model_path, 'pytorch_model.bin')))
+        state_dict = torch.load(os.path.join(cfg.model_path, 'pytorch_model.bin'))
+        #if hasattr(state_dict, 'module'):
+        #    state_dict = state_dict.module
+        model.load_state_dict(state_dict)
 
     if cfg.n_gpu > 1:
         model = torch.nn.DataParallel(model)
@@ -468,7 +471,7 @@ def main(cfg: DictConfig) -> None:
 
     if cfg.mode == 'eval':
         model.eval()
-        dataset = datasets.load_dataset('json', data_files={'dev': cfg.datasets.dev_file, 'test': cfg.datasets.test_file})        
+        dataset = datasets.load_dataset('json', data_files={'dev': cfg.dataset.dev_file, 'test': cfg.dataset.test_file})        
         dataset = dataset['dev']
         logger.info("original dataset: {}".format(len(dataset)))
 
@@ -543,7 +546,7 @@ def main(cfg: DictConfig) -> None:
     if cfg.mode == 'train':
         tb_writer = SummaryWriter(log_dir='')
         
-        dataset = datasets.load_dataset('json', data_files={'train': cfg.datasets.train_file})[cfg.mode]
+        dataset = datasets.load_dataset('json', data_files={'train': cfg.dataset.train_file})[cfg.mode]
         logger.info("original dataset: {}".format(len(dataset)))
 
         processor = TSQAProcessor()

@@ -1,5 +1,5 @@
 defaults:
-  - datasets: easy
+  - dataset: easy
 
 model_id: nq
 mode: eval
