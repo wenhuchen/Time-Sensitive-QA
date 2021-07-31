@@ -97,7 +97,7 @@
     "meaning": "member of",
     "template": [
       "$1 became a member of what organization or association $2?",
-      "What organization did $1 join $2?"
+      "What organization or association or team did $1 join $2?"
     ],
     "mode": "pointwise"
   },
