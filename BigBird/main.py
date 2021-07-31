@@ -3,7 +3,7 @@ import torch
 import pandas as pd
 from IPython.display import display, HTML
 from transformers import BigBirdTokenizer, BigBirdForQuestionAnswering, BigBirdConfig
-from utils import get_raw_scores, readGZip
+from utils import get_raw_scores
 import hydra
 from omegaconf import DictConfig
 from datasets import Dataset
@@ -22,6 +22,7 @@ from torch import nn
 from torch.nn import BCEWithLogitsLoss, CrossEntropyLoss, MSELoss
 from transformers.models.big_bird.modeling_big_bird import BigBirdOutput, BigBirdIntermediate
 from transformers import PreTrainedModel
+import gzip
 
 import os
 try:
@@ -94,10 +95,23 @@ class TSQAExample(object):
             ]
 
 class TSQAProcessor(DataProcessor):
+    # Process TSQA dataset
+    def __init__(self, data_path: str):
+        self.dataset = []
+        if data_path.endswith('gzip'):
+            with gzip.open(data_path, 'r') as f:
+                for line in f:
+                    self.dataset.append(json.loads(line))
+        else:
+            with open(data_path, 'r') as f:
+                for line in f:
+                    self.dataset.append(json.loads(line))
+        logger.info(f'original json file contains {len(self.dataset)} entries')
+
     # Processing the example
-    def _create_examples(self, dataset, is_training):
+    def _create_examples(self, is_training: bool):
         examples = []
-        for entry in tqdm(iter(dataset)):         
+        for entry in tqdm(self.dataset):         
             qas_id = entry["idx"]
             context_text = entry["context"]            
             question_text = entry["question"]
@@ -124,6 +138,13 @@ class TSQAProcessor(DataProcessor):
                     )
                     examples.append(example)
         return examples
+
+    # Get reference mapping
+    def _get_reference(self):
+        references = {}
+        for entry in self.dataset:
+            references[entry['idx']] = entry['targets']
+        return references
 
 class TSQAFeatures(object):
     def __init__(
@@ -461,28 +482,21 @@ def main(cfg: DictConfig) -> None:
     if cfg.model_path:
         logger.info('loading model from {}'.format(cfg.model_path))
         state_dict = torch.load(os.path.join(cfg.model_path, 'pytorch_model.bin'))
-        #if hasattr(state_dict, 'module'):
-        #    state_dict = state_dict.module
         model.load_state_dict(state_dict)
 
     if cfg.n_gpu > 1:
         model = torch.nn.DataParallel(model)
         model.to(f'cuda:{model.device_ids[0]}')
 
+    root_folder = os.path.dirname(os.path.dirname(__file__))
     if cfg.mode == 'eval':
         model.eval()
-        dataset = datasets.load_dataset('json', data_files={'dev': cfg.dataset.dev_file, 'test': cfg.dataset.test_file})        
-        dataset = dataset['dev']
-        logger.info("original dataset: {}".format(len(dataset)))
 
-        references = {}
-        for entry in iter(dataset):
-            references[entry['idx']] = entry['targets']
-
-        processor = TSQAProcessor()
-        examples = processor._create_examples(dataset, is_training=False)
+        processor = TSQAProcessor(os.path.join(root_folder, cfg.dataset.dev_file))
+        examples = processor._create_examples(is_training=False)
         logger.info('Finished processing the examples')
 
+        references = processor._get_reference()
         mapping, dataset = convert_examples_to_features(
             examples, tokenizer, cfg.max_sequence_length, 
             cfg.doc_stride, cfg.max_query_length, False
@@ -522,7 +536,7 @@ def main(cfg: DictConfig) -> None:
                     is_impossible = null_scores[i].argmax().item()
                     qas_id = batch[2][i].item()
 
-                    if not is_impossible:
+                    if not cfg.model_path or not is_impossible:
                         start_index, end_index, score = get_best_valid_start_end_idx(start_scores[i], end_scores[i], top_k=8, max_size=16)
                         input_ids = inputs["input_ids"][i].tolist()
                         answer_ids = input_ids[start_index: end_index + 1]
@@ -545,19 +559,15 @@ def main(cfg: DictConfig) -> None:
 
     if cfg.mode == 'train':
         tb_writer = SummaryWriter(log_dir='')
-        
-        dataset = datasets.load_dataset('json', data_files={'train': cfg.dataset.train_file})[cfg.mode]
-        logger.info("original dataset: {}".format(len(dataset)))
 
-        processor = TSQAProcessor()
-        examples = processor._create_examples(dataset, is_training=True)
+        processor = TSQAProcessor(os.path.join(root_folder, cfg.dataset.train_file))
+        examples = processor._create_examples(is_training=True)
         logger.info('Finished processing the examples')
 
         _, dataset = convert_examples_to_features(
             examples, tokenizer, cfg.max_sequence_length, 
             cfg.doc_stride, cfg.max_query_length, True
         )
-
         logger.info('Finished converting the examples')
 
         batch_size = cfg.per_gpu_train_batch_size * max(1, cfg.n_gpu)
@@ -573,7 +583,7 @@ def main(cfg: DictConfig) -> None:
             {"params": [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay)], "weight_decay": 0.0},
         ]
         optimizer = AdamW(optimizer_grouped_parameters, lr=cfg.learning_rate, eps=cfg.adam_epsilon)
-        t_total = len(dataloader) // cfg.num_train_epochs
+        t_total = len(dataloader) * cfg.num_train_epochs
 
         logger.info("***** Running training *****")
         logger.info("  Num examples = %d", len(dataset))

@@ -9,7 +9,7 @@ Extractive QA baseline model
 ### Initialize from TriviaQA checkpoint
 1. Running Training
 ```
-    python -m BigBird.main model_id=triviaqa cuda=[DEVICE] mode=train per_gpu_train_batch_size=2 n_gpu=4
+    python -m BigBird.main model_id=triviaqa cuda=[DEVICE] mode=train per_gpu_train_batch_size=2
 ```
 
 2. Running Evaluation
@@ -20,7 +20,7 @@ Extractive QA baseline model
 ### Initialize from NQ checkpoint
 1. Running Training
 ```
-    python -m BigBird.main model_id=nq cuda=[DEVICE] mode=train per_gpu_train_batch_size=8 n_gpu=1
+    python -m BigBird.main model_id=nq cuda=[DEVICE] mode=train per_gpu_train_batch_size=8
 ```
 
 1. Running Evaluation
