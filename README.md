@@ -12,9 +12,9 @@ Extractive QA baseline model
     python -m BigBird.main model_id=triviaqa cuda=[DEVICE] mode=train per_gpu_train_batch_size=2
 ```
 
-2. Running Evaluation
+2. Running Evaluation (Hard)
 ```
-    python -m BigBird.main model_id=triviaqa datasets=hard mode=eval cuda=[DEVICE] per_gpu_train_batch_size=8 model_path=[YOUR_MODEL]
+    python -m BigBird.main model_id=triviaqa dataset=hard mode=eval cuda=[DEVICE] per_gpu_train_batch_size=8 model_path=[YOUR_MODEL]
 ```
 
 ### Initialize from NQ checkpoint
@@ -23,7 +23,7 @@ Extractive QA baseline model
     python -m BigBird.main model_id=nq cuda=[DEVICE] mode=train per_gpu_train_batch_size=8
 ```
 
-1. Running Evaluation
+1. Running Evaluation (Hard)
 ```
-    python -m BigBird.main model_id=nq cuda=[DEVICE] mode=eval per_gpu_train_batch_size=8 n_gpu=1 model_path=[YOUR_MODEL]
+    python -m BigBird.main model_id=nq dataset=hard cuda=[DEVICE] mode=eval per_gpu_train_batch_size=8 n_gpu=1 model_path=[YOUR_MODEL]
 ```
