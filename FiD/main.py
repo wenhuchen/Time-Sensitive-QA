@@ -16,6 +16,7 @@ import pathlib
 sys.path.append(os.path.dirname(__file__))
 from model import FiDT5
 from utils import get_raw_scores
+from omegaconf import OmegaConf
 
 try:
     from torch.utils.tensorboard import SummaryWriter
@@ -165,13 +166,15 @@ class Collator(object):
 
 @hydra.main(config_name="config")
 def main(cfg: DictConfig) -> None:
-    print(cfg)
-
     if cfg.cuda:
-        assert cfg.n_gpu == 1, "If you specify cuda id, the n_gpu needs to be set to 1."
+        cfg.n_gpu == 1
         device = torch.device(f'cuda:{cfg.cuda}')
     else:
+        cfg.n_gpu = torch.cuda.device_count()
         device = torch.device('cuda')
+    print(cfg)
+
+    OmegaConf.save(config=cfg, f='config.yaml')
 
     model_name = 't5-' + cfg.model_id
 

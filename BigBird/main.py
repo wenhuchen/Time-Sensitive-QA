@@ -1,7 +1,6 @@
 import datasets
 import torch
 import pandas as pd
-from IPython.display import display, HTML
 from transformers import BigBirdTokenizer, BigBirdForQuestionAnswering, BigBirdConfig
 from utils import get_raw_scores
 import hydra
@@ -23,6 +22,7 @@ from torch.nn import BCEWithLogitsLoss, CrossEntropyLoss, MSELoss
 from transformers.models.big_bird.modeling_big_bird import BigBirdOutput, BigBirdIntermediate
 from transformers import PreTrainedModel
 import gzip
+from omegaconf import OmegaConf
 
 import os
 try:
@@ -458,13 +458,15 @@ class BigBirdForQuestionAnsweringWithNull(PreTrainedModel):
 
 @hydra.main(config_name="config")
 def main(cfg: DictConfig) -> None:
-    print(cfg)
-
     if cfg.cuda:
-        assert cfg.n_gpu == 1, "If you specify cuda id, the n_gpu needs to be set to 1."
+        cfg.n_gpu == 1
         device = torch.device(f'cuda:{cfg.cuda}')
     else:
+        cfg.n_gpu = torch.cuda.device_count()
         device = torch.device('cuda')
+    print(cfg)
+
+    OmegaConf.save(config=cfg, f='config.yaml')
 
     if cfg.model_id == 'triviaqa':
         model_id = "google/bigbird-base-trivia-itc"
