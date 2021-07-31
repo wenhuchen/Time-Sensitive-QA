@@ -167,7 +167,7 @@ class Collator(object):
 @hydra.main(config_name="config")
 def main(cfg: DictConfig) -> None:
     if cfg.cuda:
-        cfg.n_gpu == 1
+        cfg.n_gpu = 1
         device = torch.device(f'cuda:{cfg.cuda}')
     else:
         cfg.n_gpu = torch.cuda.device_count()
