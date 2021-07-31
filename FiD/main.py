@@ -192,7 +192,7 @@ def main(cfg: DictConfig) -> None:
         model = torch.nn.DataParallel(model)
         model.to(f'cuda:{model.device_ids[0]}')
 
-    root_folder = os.path.dirname(__file__)
+    root_folder = os.path.dirname(os.path.dirname(__file__))
     if cfg.mode == 'train':
         tb_writer = SummaryWriter(log_dir='')
 
