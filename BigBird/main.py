@@ -483,7 +483,7 @@ def main(cfg: DictConfig) -> None:
 
     if cfg.model_path:
         logger.info('loading model from {}'.format(cfg.model_path))
-        state_dict = torch.load(os.path.join(cfg.model_path, 'pytorch_model.bin'))
+        state_dict = torch.load(os.path.join(cfg.model_path, 'pytorch_model.bin'), map_location='cuda:0')
         model.load_state_dict(state_dict)
 
     if cfg.n_gpu > 1:
