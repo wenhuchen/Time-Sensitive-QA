@@ -89,9 +89,13 @@ class TSQADataset(torch.utils.data.Dataset):
 
 
 def load_data(data_path: str):
-    with open(data_path, 'r') as fin:
-        data = json.load(fin)
-    
+    if '.gzip' in data_path:
+        with gzip.open(data_path, 'r') as fin:
+            data = json.load(fin)
+    else:
+        with open(data_path, 'r') as fin:
+            data = json.load(fin)
+
     examples = []
     for k, example in enumerate(data):
         if not 'id' in example:
@@ -188,10 +192,11 @@ def main(cfg: DictConfig) -> None:
         model = torch.nn.DataParallel(model)
         model.to(f'cuda:{model.device_ids[0]}')
 
+    root_folder = os.path.dirname(__file__)
     if cfg.mode == 'train':
         tb_writer = SummaryWriter(log_dir='')
 
-        train_examples = load_data(cfg.dataset.train_file)
+        train_examples = load_data(os.path.join(root_folder, cfg.dataset.train_file))
         dataset = TSQADataset(train_examples, cfg.n_context)
         logger.info("original dataset: {}".format(len(dataset)))
 
@@ -265,7 +270,8 @@ def main(cfg: DictConfig) -> None:
 
     if cfg.mode == 'eval':
         model.eval()
-        dev_examples = load_data(cfg.dataset.dev_file)
+        dev_examples = load_data(os.path.join(root_folder, cfg.dataset.dev_file))
+
         dataset = TSQADataset(dev_examples, cfg.n_context)
         logger.info("original dataset: {}".format(len(dataset)))
 

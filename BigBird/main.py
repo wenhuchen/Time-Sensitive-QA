@@ -488,10 +488,11 @@ def main(cfg: DictConfig) -> None:
         model = torch.nn.DataParallel(model)
         model.to(f'cuda:{model.device_ids[0]}')
 
+    root_folder = os.path.dirname(__file__)
     if cfg.mode == 'eval':
         model.eval()
 
-        processor = TSQAProcessor(cfg.dataset.dev_file)
+        processor = TSQAProcessor(os.path.join(root_folder, cfg.dataset.dev_file))
         examples = processor._create_examples(is_training=False)
         logger.info('Finished processing the examples')
 
@@ -559,7 +560,7 @@ def main(cfg: DictConfig) -> None:
     if cfg.mode == 'train':
         tb_writer = SummaryWriter(log_dir='')
 
-        processor = TSQAProcessor(cfg.dataset.train_file)
+        processor = TSQAProcessor(os.path.join(root_folder, cfg.dataset.train_file))
         examples = processor._create_examples(is_training=True)
         logger.info('Finished processing the examples')
 
