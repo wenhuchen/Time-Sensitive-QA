@@ -309,7 +309,8 @@ def convert_example_to_features(example, max_seq_length, doc_stride, max_query_l
         )
 
     spans = []
-    truncated_query = tokenizer.encode(example.question_text, add_special_tokens=False, max_length=max_query_length)
+    truncated_query = tokenizer.encode(example.question_text, add_special_tokens=False, 
+            max_length=max_query_length, truncation=True)
     sequence_added_tokens = tokenizer.model_max_length - tokenizer.max_len_single_sentence
 
     sequence_pair_added_tokens = tokenizer.model_max_length - tokenizer.max_len_sentences_pair
@@ -323,7 +324,7 @@ def convert_example_to_features(example, max_seq_length, doc_stride, max_query_l
             return_overflowing_tokens=True,
             padding='max_length',
             stride=max_seq_length - doc_stride - len(truncated_query) - sequence_pair_added_tokens,
-            truncation='only_second'
+            truncation=True
         )
         paragraph_len = min(
             len(all_doc_tokens) - len(spans) * doc_stride,
