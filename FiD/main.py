@@ -17,6 +17,7 @@ sys.path.append(os.path.dirname(__file__))
 from model import FiDT5
 from utils import get_raw_scores
 from omegaconf import OmegaConf
+import gzip
 
 try:
     from torch.utils.tensorboard import SummaryWriter
@@ -57,22 +58,19 @@ class TSQADataset(torch.utils.data.Dataset):
         return len(self.data)
 
     def get_target(self, example):
-        if 'target' in example:
-            target = example['target']
+        assert 'targets' in example
+        if 'targets' in example:
+            target = random.choice(example['targets'])
             return target + ' </s>'
-        elif 'answers' in example:
-            return random.choice(example['answers']) + ' </s>'
-        else:
-            return None
 
     def __getitem__(self, index):
         example = self.data[index]
         question = self.question_prefix + " " + example['question']
         target = self.get_target(example)
 
-        if 'ctxs' in example and self.n_context is not None:
+        if 'paragraphs' in example and self.n_context is not None:
             f = self.title_prefix + " {} " + self.passage_prefix + " {}"
-            contexts = example['ctxs'][:self.n_context]
+            contexts = example['paragraphs'][:self.n_context]
             passages = [f.format(c['title'], c['text']) for c in contexts]
         else:
             passages, scores = None, None
@@ -90,12 +88,15 @@ class TSQADataset(torch.utils.data.Dataset):
 
 
 def load_data(data_path: str):
-    if '.gzip' in data_path:
-        with gzip.open(data_path, 'r') as fin:
-            data = json.load(fin)
+    data = []
+    if data_path.endswith('gzip'):
+        with gzip.open(data_path, 'r') as f:
+            for line in f:
+                data.append(json.loads(line))
     else:
-        with open(data_path, 'r') as fin:
-            data = json.load(fin)
+        with open(data_path, 'r') as f:
+            for line in f:
+                data.append(json.loads(line))
 
     examples = []
     for k, example in enumerate(data):
@@ -280,9 +281,9 @@ def main(cfg: DictConfig) -> None:
 
         references = {}
         for entry in dev_examples:
-            references[entry['index']] = entry['answers']
+            references[entry['idx']] = entry['targets']
 
-        batch_size = cfg.per_gpu_train_batch_size * max(1, cfg.n_gpu)
+        batch_size = cfg.per_gpu_eval_batch_size * max(1, cfg.n_gpu)
         
         sampler = SequentialSampler(dataset)
         collator = Collator(cfg.text_maxlength, tokenizer)
@@ -292,7 +293,7 @@ def main(cfg: DictConfig) -> None:
 
         logger.info("***** Running evaluation *****")
         logger.info("  Num examples = %d", len(dataset))
-        logger.info("  Instantaneous batch size per GPU = %d", cfg.per_gpu_train_batch_size)
+        logger.info("  Instantaneous batch size per GPU = %d", cfg.per_gpu_eval_batch_size)
 
         results = {}
         for step, batch in enumerate(tqdm(dataloader, desc="Iteration")):
@@ -311,8 +312,8 @@ def main(cfg: DictConfig) -> None:
                 for k, o in enumerate(outputs):
                     ans = tokenizer.decode(o, skip_special_tokens=True)
                     example = dataset.data[idx[k]]
-                    assert example['index'] not in results
-                    results[example['index']] = ans
+                    assert example['idx'] not in results
+                    results[example['idx']] = ans
 
         assert len(results) == len(references), 'length not equal'
         scores = get_raw_scores(results, references)

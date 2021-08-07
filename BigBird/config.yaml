@@ -5,7 +5,7 @@ model_id: nq
 mode: eval
 cuda:
 per_gpu_train_batch_size: 8
-learning_rate: 5e-5
+learning_rate: 2e-5
 adam_epsilon: 1e-8
 weight_decay: 0.0
 num_train_epochs: 3

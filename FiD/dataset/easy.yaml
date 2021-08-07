@@ -1,6 +1,6 @@
 # @package _group_
 
 name: easy
-train_file: dataset/train.t5.easy.json
-dev_file: dataset/dev.t5.easy.json
-test_file: dataset/test.t5.easy.json
+train_file: dataset/train.easy.json.gzip
+dev_file: dataset/dev.easy.json
+test_file: dataset/test.easy.json

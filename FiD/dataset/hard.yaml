@@ -1,6 +1,6 @@
 # @package _group_
 
 name: hard
-train_file: /data2/wenhu/Time-Sensitive-QA/dataset/train.t5.hard.json
-dev_file: /data2/wenhu/Time-Sensitive-QA/dataset/dev.t5.hard.json
-test_file: /data2/wenhu/Time-Sensitive-QA/dataset/test.t5.hard.json
+train_file: dataset/train.hard.json.gzip
+dev_file: dataset/dev.hard.json
+test_file: dataset/test.hard.json
