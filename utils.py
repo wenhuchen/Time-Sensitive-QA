@@ -3,6 +3,7 @@ import re
 from collections import Counter, OrderedDict
 import re
 import string
+import warnings
 
 def normalize_answer(s):
     """Lower text and remove punctuation, articles and extra whitespace."""
@@ -52,9 +53,13 @@ def get_raw_scores(examples: dict, references: dict):
     exact_scores = {}
     f1_scores = {}
     
-    for idx, reference in references.items():
+    if len(examples) != len(references):
+        warnings.warn('The length of the prediction and reference are not the same')
+        assert len(examples) < len(references), 'prediction should be a subset'
+
+    for idx, prediction in examples.items():
+        reference = references[idx]
         assert isinstance(reference, list), reference
-        prediction = examples[idx]
         
         exact_scores[idx] = max(compute_exact(a, prediction) for a in reference)
         f1_scores[idx] = max(compute_f1(a, prediction) for a in reference)
