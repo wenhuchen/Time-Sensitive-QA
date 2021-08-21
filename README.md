@@ -1,5 +1,6 @@
 # Time-Sensitive-QA
-The repo for Time-Sensitive Question Answering
+The repo contains the dataset and code for paper [Time-Sensitive Question Answering dataset](https://arxiv.org/abs/2108.06314). The dataset is collected by UCSB NLP group and issued under MIT license.
+
 
 
 ## BigBird
