@@ -21,41 +21,49 @@ The repo contains the dataset and code for paper [Time-Sensitive Question Answer
 - [Pytorch 1.6.0](https://pytorch.org/)
 
 ## BigBird
-
 Extractive QA baseline model, first switch to the BigBird Conda environment:
-
-### Initialize from TriviaQA checkpoint
-1. Running Training
-```
-    python -m BigBird.main model_id=triviaqa cuda=[DEVICE] mode=train per_gpu_train_batch_size=2
-```
-
-2. Running Evaluation (Hard)
-```
-    python -m BigBird.main model_id=triviaqa dataset=hard mode=eval cuda=[DEVICE] model_path=[YOUR_MODEL]
-```
-
 ### Initialize from NQ checkpoint
-1. Running Training
+Running Training (Hard)
 ```
-    python -m BigBird.main model_id=nq cuda=[DEVICE] mode=train per_gpu_train_batch_size=8
+    python -m BigBird.main model_id=nq dataset=hard cuda=[DEVICE] mode=train per_gpu_train_batch_size=8
 ```
 
-1. Running Evaluation (Hard)
+Running Evaluation (Hard)
 ```
     python -m BigBird.main model_id=nq dataset=hard cuda=[DEVICE] mode=eval model_path=[YOUR_MODEL]
 ```
 
+### Initialize from TriviaQA checkpoint
+Running Training (Hard)
+```
+    python -m BigBird.main model_id=triviaqa dataset=hard cuda=[DEVICE] mode=train per_gpu_train_batch_size=2
+```
+
+Running Evaluation (Hard)
+```
+    python -m BigBird.main model_id=triviaqa dataset=hard mode=eval cuda=[DEVICE] model_path=[YOUR_MODEL]
+```
 
 ## Fusion-in Decoder
-
+Generative QA baseline model, first switch to the FiD Conda environment:
 ### Initialize from NQ checkpoint
-1. Running Training
+Running Training (Hard)
 ```
-    python -m FiD.main mode=train model_path=/data2/wenhu/Time-Sensitive-QA/FiD/pretrained_models/nq_reader_base/ dataset=hard
+    python -m FiD.main mode=train dataset=hard model_path=/data2/wenhu/Time-Sensitive-QA/FiD/pretrained_models/nq_reader_base/
 ```
 
-2. Running Evaluation (Hard)
+Running Evaluation (Hard)
+```
+    python -m FiD.main mode=eval cuda=3 dataset=hard model_path=[YOUR_MODEL] 
+```
+
+### Initialize from TriviaQA checkpoint
+Running Training (Hard)
+```
+    python -m FiD.main mode=train dataset=hard model_path=/data2/wenhu/Time-Sensitive-QA/FiD/pretrained_models/tqa_reader_base/
+```
+
+Running Evaluation (Hard)
 ```
     python -m FiD.main mode=eval cuda=3 dataset=hard model_path=[YOUR_MODEL] 
 ```
