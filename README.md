@@ -1,11 +1,28 @@
 # Time-Sensitive-QA
 The repo contains the dataset and code for paper [Time-Sensitive Question Answering dataset](https://arxiv.org/abs/2108.06314). The dataset is collected by UCSB NLP group and issued under MIT license.
 
+![overview](./intro.png).
 
+## Repo Structure
+- dataset/: this folder contains all the dataset
+- dataset/annotated*: these files are the annotated (passage, time-evolving facts) by crowd-workers.
+- dataset/train-dev-test: these files are synthesized using templates, including both easy and hard versions.
+- BigBird/: all the running code for BigBird models
+- FiD/: all the running code for fusion-in-decoder models
+
+## Requirements
+- [hydra 1.0.6](https://hydra.cc/docs/intro/)
+- [omegaconf 2.1.0](https://github.com/omry/omegaconf)
+### BigBird
+- [Transformers 4.8.2](https://github.com/huggingface/transformers)
+- [Pytorch 1.8.1+cu102](https://pytorch.org/)
+### FiD
+- [Transformers 3.0.2](https://github.com/huggingface/transformers)
+- [Pytorch 1.6.0](https://pytorch.org/)
 
 ## BigBird
 
-Extractive QA baseline model
+Extractive QA baseline model, first switch to the BigBird Conda environment:
 
 ### Initialize from TriviaQA checkpoint
 1. Running Training
