@@ -1,11 +1,9 @@
-import datasets
 import torch
 import pandas as pd
 from transformers import BigBirdTokenizer, BigBirdForQuestionAnswering, BigBirdConfig
 from utils import get_raw_scores
 import hydra
 from omegaconf import DictConfig
-from datasets import Dataset
 from tqdm import tqdm, trange
 from functools import partial
 import json
