@@ -14,10 +14,10 @@ This dataset is aimed to study the existing reading comprehension models' capabi
 ## Requirements
 - [hydra 1.0.6](https://hydra.cc/docs/intro/)
 - [omegaconf 2.1.0](https://github.com/omry/omegaconf)
-### BigBird
+1. BigBird-Specific Requirements
 - [Transformers 4.8.2](https://github.com/huggingface/transformers)
 - [Pytorch 1.8.1+cu102](https://pytorch.org/)
-### FiD
+2. FiD-Specific Requirements
 - [Transformers 3.0.2](https://github.com/huggingface/transformers)
 - [Pytorch 1.6.0](https://pytorch.org/)
 
