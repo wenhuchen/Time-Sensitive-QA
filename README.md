@@ -68,3 +68,9 @@ Running Evaluation (Hard)
 ```
     python -m FiD.main mode=eval cuda=3 dataset=hard model_path=[YOUR_MODEL] 
 ```
+
+## License
+The data and code are released under BSD 3-Clause "New" or "Revised" License.
+
+## Report
+Please create an issue or send an email to hustchenwenhu@gmail.com for any questions/bugs/etc.
