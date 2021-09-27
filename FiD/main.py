@@ -176,7 +176,8 @@ def main(cfg: DictConfig) -> None:
     print(cfg)
 
     OmegaConf.save(config=cfg, f='config.yaml')
-
+    
+    assert cfg.model_id == 'base', 'model id can only be base'
     model_name = 't5-' + cfg.model_id
 
     tokenizer = T5Tokenizer.from_pretrained(model_name)
@@ -315,13 +316,11 @@ def main(cfg: DictConfig) -> None:
                     assert example['idx'] not in results
                     results[example['idx']] = ans
 
-        assert len(results) == len(references), 'length not equal'
         scores = get_raw_scores(results, references)
         print('evaluation results', scores)
 
         with open('output.json', 'w') as f:
             json.dump(results, f, indent=2)
-
 
 if __name__ == "__main__":
     main()
