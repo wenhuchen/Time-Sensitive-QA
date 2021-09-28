@@ -58,6 +58,11 @@ Running Evaluation (Hard)
     python -m FiD.main mode=eval cuda=3 dataset=hard model_path=[YOUR_MODEL] 
 ```
 
+Running Evalution on Human-Test (Hard)
+```
+    python -m FiD.main mode=test cuda=3 dataset=human_hard model_path=[YOUR_MODEL] 
+```
+
 ### Initialize from TriviaQA checkpoint
 Running Training (Hard)
 ```
@@ -68,6 +73,12 @@ Running Evaluation (Hard)
 ```
     python -m FiD.main mode=eval cuda=3 dataset=hard model_path=[YOUR_MODEL] 
 ```
+
+Running Evalution on Human-Test (Hard)
+```
+    python -m FiD.main mode=test cuda=3 dataset=human_hard model_path=[YOUR_MODEL] 
+```
+
 
 ## License
 The data and code are released under BSD 3-Clause "New" or "Revised" License.
