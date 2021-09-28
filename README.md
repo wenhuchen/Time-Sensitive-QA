@@ -60,7 +60,7 @@ Running Evaluation (Hard)
 
 Running Evalution on Human-Test (Hard)
 ```
-    python -m FiD.main mode=test cuda=3 dataset=human_hard model_path=[YOUR_MODEL] 
+    python -m FiD.main mode=eval cuda=3 dataset=human_hard model_path=[YOUR_MODEL] 
 ```
 
 ### Initialize from TriviaQA checkpoint
@@ -76,7 +76,7 @@ Running Evaluation (Hard)
 
 Running Evalution on Human-Test (Hard)
 ```
-    python -m FiD.main mode=test cuda=3 dataset=human_hard model_path=[YOUR_MODEL] 
+    python -m FiD.main mode=eval cuda=3 dataset=human_hard model_path=[YOUR_MODEL] 
 ```
 
 
