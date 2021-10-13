@@ -1,5 +1,5 @@
 # Time-Sensitive-QA
-The repo contains the dataset and code for paper [Time-Sensitive Question Answering dataset](https://arxiv.org/abs/2108.06314). The dataset is collected by UCSB NLP group and issued under BSD 3-Clause "New" or "Revised" License.
+The repo contains the dataset and code for NeurIPS2021 (dataset track) paper [Time-Sensitive Question Answering dataset](https://arxiv.org/abs/2108.06314). The dataset is collected by UCSB NLP group and issued under BSD 3-Clause "New" or "Revised" License.
 
 This dataset is aimed to study the existing reading comprehension models' capability to perform temporal reasoning, and see whether they are sensitive to the temporal description in the given question. An example of annotated question-answer pairs are listed as follows:
 ![overview](./intro.png)
