@@ -79,6 +79,8 @@ Running Evalution on Human-Test (Hard)
     python -m FiD.main mode=eval cuda=3 dataset=human_hard model_path=[YOUR_MODEL] 
 ```
 
+### Open-Domain Experiments
+For build the retriever, I would refer you to https://github.com/wenhuchen/OTT-QA/tree/master/retriever, which is based on DrQA's TF-IDF/BM25 retriever implementation.
 
 ## License
 The data and code are released under BSD 3-Clause "New" or "Revised" License.
