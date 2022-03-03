@@ -46,7 +46,7 @@ Running Evaluation (Hard)
 ```
 
 ## Fusion-in Decoder
-Generative QA baseline model, first switch to the FiD Conda environment:
+Generative QA baseline model, first switch to the FiD Conda environment and downaload the checkpoints from [Google Drive](https://drive.google.com/file/d/19DnItecTwqUqhw09zH3eR61iz_22dX-u/view?usp=sharing):
 ### Initialize from NQ checkpoint
 Running Training (Hard)
 ```
